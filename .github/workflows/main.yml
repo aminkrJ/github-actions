@@ -1,17 +1,17 @@
-name: Merge any release branch to uat
+name: Main workflow
+
 on:
   push:
-    branches:
-      - master
-jobs:
-  merge-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
+    branches: [master]
 
-      - name: Merge master -> rc1
-        uses: devmasx/merge-branch@v1.3.0
+jobs:
+  merge-master-to-develop:
+    name: Merge master -> rc1
+    runs-on: ubuntu-latest
+
+    steps:
+        uses: tukasz/direct-merge-action@v1
         with:
-          type: now
-          target_branch: rc1
-          github_token: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: master
+          target-branch: rc1
