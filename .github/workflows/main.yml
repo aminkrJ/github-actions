@@ -1,6 +1,7 @@
 name: Merge any release branch to uat
 on:
   push:
+    branches:
       - master
 jobs:
   merge-branch:
