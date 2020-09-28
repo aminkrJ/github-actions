@@ -1,7 +1,7 @@
 name: Merge any release branch to uat
 on:
   push:
-      - 'master'
+      - master
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
