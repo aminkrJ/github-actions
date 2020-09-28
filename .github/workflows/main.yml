@@ -1,3 +1,16 @@
-- name: Merge branch
-  uses: devmasx/merge-branch@v1.3.0
+name: Merge any release branch to uat
+on:
+  push:
+      - 'master'
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
+      - name: Merge master -> rc1
+        uses: devmasx/merge-branch@v1.3.0
+        with:
+          type: now
+          target_branch: rc1
+          github_token: ${{ github.token }}
