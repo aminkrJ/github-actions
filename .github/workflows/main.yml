@@ -13,14 +13,14 @@ jobs:
         uses: devmasx/merge-branch@v1.3.0
         with:
           type: now
-          from_branch: development
-          target_branch: staging
+          from_branch: master
+          target_branch: rc1
           github_token: ${{ github.token }}
 
       - name: Merge staging -> uat
         uses: devmasx/merge-branch@v1.3.0
         with:
           type: now
-          from_branch: staging
-          target_branch: uat
+          from_branch: master
+          target_branch: rc2
           github_token: ${{ github.token }}
